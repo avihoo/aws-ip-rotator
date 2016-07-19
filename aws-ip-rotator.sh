@@ -10,7 +10,7 @@ case $1 in
     *)
 	INSTANCE=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 	OLD_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
-	NEW_IP=$(aws ec2 allocate-address --query PublicIp | tr -d '"')
+	NEW_IP=$(aws ec2 allocate-address --domain vpc --query PublicIp | tr -d '"')
 	echo ''
 	echo "Old IP: $OLD_IP"
 	echo "New IP: $NEW_IP"
